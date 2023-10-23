@@ -1,13 +1,13 @@
-import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
-import { PropsWithChildren } from "react"
+import { Avatar, Box, Divider, Drawer, List, useMediaQuery, useTheme } from "@mui/material"
+import { FC, PropsWithChildren } from "react"
 import { useDrawerContext } from "../../hooks"
+import { ListItemLink } from "./components/ListItemLink"
 
-export const MenuLateral: React.FC<PropsWithChildren> = ({children}) => {
+export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
 
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down("sm"))
-    const {isDrawerOpen, toggleDrawerOpen} = useDrawerContext()
-    
+    const {isDrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext()
 
     return (
         <>
@@ -22,13 +22,20 @@ export const MenuLateral: React.FC<PropsWithChildren> = ({children}) => {
 
                     <Box flex={1}> 
                         <List>
-                            <ListItemButton>
-                                <ListItemIcon> <Icon>home</Icon> </ListItemIcon>
-                                <ListItemText primary="Página inicial" />
-                            </ListItemButton>
+                            {drawerOptions?.map((drawerOption) => {
+                                return (
+                                    <ListItemLink
+                                        key={drawerOption.path}
+                                        icon={drawerOption.icon}
+                                        label={drawerOption.label}
+                                        to={drawerOption.path}
+                                        onClick={smDown ? toggleDrawerOpen : undefined}
+                                    />
+                                )
+                            })}
                         </List>
+                    </Box>                                          
 
-                    </Box>
                 </Box>
             </Drawer>
             <Box height={"100vh"} marginLeft={smDown ? 0 : theme.spacing(28)}>
