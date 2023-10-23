@@ -1,17 +1,16 @@
 import { ThemeProvider } from "@emotion/react";
 import { Box } from "@mui/material";
-import { FC, ReactNode, createContext, useCallback, useMemo, useState } from "react";
+import { FC, PropsWithChildren, createContext, useCallback, useMemo, useState } from "react";
 import { DarkTheme, LightTheme } from "../themes";
 
 interface IThemeContextData {
     themeName?: "light" | "dark"
     toggleTheme?: () => void
-    children?: ReactNode
 }
 
 export const ThemeContext = createContext({} as IThemeContextData)
 
-export const AppThemeProvider: FC<IThemeContextData> = ({children}) => {
+export const AppThemeProvider: FC<PropsWithChildren<IThemeContextData>> = ({children}) => {
 
     const [themeName, setThemeName] = useState<"light" | "dark">("light")
 

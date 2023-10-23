@@ -1,18 +1,18 @@
 import { Button } from "@mui/material"
 import { Navigate, Route, Routes } from "react-router-dom"
-import { useThemeContext } from "../shared/hooks"
+import { useDrawerContext } from "../shared/hooks"
 
 export const AppRoutes = () => {
 
-    const {toggleTheme} = useThemeContext()
+    const {toggleDrawerOpen} = useDrawerContext()
 
     return (
         <>
             <Routes>
                 <Route path="/pagina-inicial" element={<Button variant="contained" 
                                                                 color="primary"
-                                                                onClick={toggleTheme}>
-                                                                Toggle Theme
+                                                                onClick={toggleDrawerOpen}>
+                                                                Toggle Drawer Open
                                                         </Button>} />
 
                 <Route path="*" element={<Navigate to={"/pagina-inicial"}/>} />
