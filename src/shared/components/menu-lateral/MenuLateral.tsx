@@ -1,6 +1,6 @@
-import { Avatar, Box, Divider, Drawer, List, useMediaQuery, useTheme } from "@mui/material"
+import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
 import { FC, PropsWithChildren } from "react"
-import { useDrawerContext } from "../../hooks"
+import { useDrawerContext, useThemeContext } from "../../hooks"
 import { ListItemLink } from "./components/ListItemLink"
 
 export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
@@ -8,6 +8,7 @@ export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down("sm"))
     const {isDrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext()
+    const {toggleTheme, themeName} = useThemeContext()
 
     return (
         <>
@@ -34,9 +35,17 @@ export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
                                 )
                             })}
                         </List>
-                    </Box>                                          
+                    </Box>   
+
+                    <Box paddingBottom={1}>
+                        <ListItemButton onClick={toggleTheme}>
+                            <ListItemIcon> <Icon>{themeName ===  "light" ? "dark_mode" : "light_mode"}</Icon> </ListItemIcon>
+                            <ListItemText primary={themeName === "dark" ? "Tema Claro" : "Tema Escuro"} />
+                        </ListItemButton>
+                    </Box>                                   
 
                 </Box>
+
             </Drawer>
             <Box height={"100vh"} marginLeft={smDown ? 0 : theme.spacing(28)}>
                 {children}
