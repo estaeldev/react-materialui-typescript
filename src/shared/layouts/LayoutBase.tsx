@@ -4,11 +4,10 @@ import { useDrawerContext } from "../hooks";
 
 interface ILayoutBaseProps {
     titulo: string
-    barraDeFerramentas?: ReactNode
-    children?: ReactNode
+    children?: ReactNode | ReactNode[]
 }
 
-export const LayoutBase: FC<ILayoutBaseProps> = ({children, titulo, barraDeFerramentas}) => {
+export const LayoutBase: FC<ILayoutBaseProps> = ({titulo, children}) => {
 
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down("sm"))
@@ -30,15 +29,7 @@ export const LayoutBase: FC<ILayoutBaseProps> = ({children, titulo, barraDeFerra
                 
             </Box>
 
-            {barraDeFerramentas && (
-                <Box>
-                {barraDeFerramentas}
-                </Box>
-            )}
-
-            <Box flex={1} overflow="auto">
-                {children}
-            </Box>
+           {children}
 
         </Box>
     )

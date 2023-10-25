@@ -1,24 +1,11 @@
-import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
+import { Box, Paper, useTheme } from "@mui/material";
 import { FC, ReactNode } from "react";
 
-interface IBarraDeFerramentaProps {
-    textoDaBusca?: string
-    mostrarInputBusca?: boolean
-    aoMudarTextoDeBusca?: (novoTexto: string) => void
-    textoBotaoNovo?: string
-    mostrarBotaoNovo?: boolean
-    aoClicarEmNovoBotao?: () => void
-    children?: ReactNode
+interface IBarraDeFerramentasProps {
+    children?: ReactNode | ReactNode[]
 }
 
-export const BarraDeFerramenta: FC<IBarraDeFerramentaProps> = ({
-    textoDaBusca="", 
-    mostrarInputBusca=false, 
-    aoMudarTextoDeBusca,
-    textoBotaoNovo="Novo",
-    mostrarBotaoNovo=true,
-    aoClicarEmNovoBotao
-}) => {
+export const BarraDeFerramentas: FC<IBarraDeFerramentasProps> = ({children}) => {
 
     const theme = useTheme()
 
@@ -32,31 +19,8 @@ export const BarraDeFerramenta: FC<IBarraDeFerramentaProps> = ({
             paddingX={2}
             alignItems="center"
         >   
-
-            {mostrarInputBusca && (
-                <Box display="flex" alignItems="center">
-                    <TextField 
-                        size="small" 
-                        value={textoDaBusca}
-                        onChange={(event) => aoMudarTextoDeBusca?.(event.target.value)}
-                        label="Pesquisar" 
-                        placeholder="Digite aqui..." 
-                    />
-                    <Icon>search</Icon> 
-                </Box>
-            )}
-
-            {mostrarBotaoNovo && (
-                <Box flex={1} display="flex" justifyContent="end">
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        endIcon={<Icon>add</Icon>}
-                        onClick={aoClicarEmNovoBotao}>
-                        {textoBotaoNovo}
-                    </Button>
-                </Box>
-            )}
+            
+            {children}
 
         </Box>
     ) 
