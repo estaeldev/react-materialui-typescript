@@ -1,12 +1,13 @@
 import { Box, Button, Icon } from "@mui/material";
 import { FC } from "react";
 
-interface IBarraDeFerramentasButtonProps {
+interface IFerramentasDaListagemButtonProps {
     textoBotaoNovo?: string
     aoClicarEmNovoBotao?: () => void
 }
 
-export const BarraDeFerramentasButton: FC<IBarraDeFerramentasButtonProps> = ({textoBotaoNovo="Novo", aoClicarEmNovoBotao}) => {
+export const FerramentasDaListagemButton: FC<IFerramentasDaListagemButtonProps> = ({
+    textoBotaoNovo="Novo", aoClicarEmNovoBotao}) => {
 
     return (
         <Box flex={1} display="flex" justifyContent="end">

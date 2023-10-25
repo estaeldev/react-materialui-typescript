@@ -1,16 +1,16 @@
 import { FC } from "react"
-import { BarraDeFerramentas } from "../../shared/components"
-import { BarraDeFerramentasButton, BarraDeFerramentasTextField } from "../../shared/components/barra-de-ferramentas/components"
+import { FerramentasDaListagem } from "../../shared/components"
+import { FerramentasDaListagemButton, FerramentasDaListagemTextField } from "../../shared/components/ferramentas-da-listagem/components"
 import { LayoutBase } from "../../shared/layouts"
 
 export const Dashboard: FC = () => {
 
     return (
         <LayoutBase titulo="Página Inicial">
-            <BarraDeFerramentas>
-                <BarraDeFerramentasTextField />
-                <BarraDeFerramentasButton />
-            </BarraDeFerramentas>
+            <FerramentasDaListagem>
+                <FerramentasDaListagemTextField />
+                <FerramentasDaListagemButton />
+            </FerramentasDaListagem>
             Testando
         </LayoutBase>
     )

@@ -1,12 +1,13 @@
 import { Box, Icon, TextField } from "@mui/material";
 import { FC } from "react";
 
-interface IBarraDeFerramentasTextFieldProps {
+interface IFerramentasDaListagemTextFieldProps {
     textoDaBusca?: string
     aoMudarTextoDeBusca?: (novoTexto: string) => void
 }
 
-export const BarraDeFerramentasTextField: FC<IBarraDeFerramentasTextFieldProps> = ({textoDaBusca="", aoMudarTextoDeBusca}) => {
+export const FerramentasDaListagemTextField: FC<IFerramentasDaListagemTextFieldProps> = ({
+    textoDaBusca="", aoMudarTextoDeBusca}) => {
     
     return (
         <Box display="flex" alignItems="center">
