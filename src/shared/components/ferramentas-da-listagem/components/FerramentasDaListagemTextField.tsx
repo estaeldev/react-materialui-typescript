@@ -1,25 +1,29 @@
-import { Box, Icon, TextField } from "@mui/material";
+import { Box, Icon, IconButton, TextField, Typography } from "@mui/material";
 import { FC } from "react";
 import { Environment } from "../../../environments";
 
 interface IFerramentasDaListagemTextFieldProps {
-    textoDaBusca?: string
-    aoMudarTextoDeBusca?: (novoTexto: string) => void
+    inputBuscaRef?: any
+    handleClickBusca?: () => void
+    handleOnchangeInput?: () => void
 }
 
 export const FerramentasDaListagemTextField: FC<IFerramentasDaListagemTextFieldProps> = ({
-    textoDaBusca="", aoMudarTextoDeBusca}) => {
+    inputBuscaRef, handleClickBusca, handleOnchangeInput}) => {
     
     return (
         <Box display="flex" alignItems="center">
             <TextField 
-                size="small" 
-                value={textoDaBusca}
-                onChange={(event) => aoMudarTextoDeBusca?.(event.target.value)}
+                size="small"
+                inputRef={inputBuscaRef}
+                onChange={handleOnchangeInput}
                 label="Pesquisar" 
                 placeholder={Environment.INPUT_DE_BUSCA}
             />
-            <Icon>search</Icon> 
+            <IconButton color="primary" onClick={handleClickBusca}>
+                <Icon>person_search</Icon> 
+                <Typography>BUSCAR</Typography>    
+            </IconButton>
         </Box>
     )
 

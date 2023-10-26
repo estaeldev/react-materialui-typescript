@@ -22,7 +22,7 @@ type TPessoasComTotalCount = {
 }
 
 const getAll = async (page=1, filter=""): Promise<TPessoasComTotalCount | Error> => {
-    const url = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHA}&_nomeCompleto_like=${filter}`
+    const url = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHA}&nomeCompleto_like=${filter}`
     try {
         const {data, headers} = await AxiosConfig.get<IListagemPessoas[]>(url)
 
