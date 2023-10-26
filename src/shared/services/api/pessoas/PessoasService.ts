@@ -1,20 +1,6 @@
 import { Environment } from "../../../environments"
+import { IDetalhePessoa, IListagemPessoas } from "../../../interfaces"
 import { AxiosConfig } from "../axios-config/AxiosConfig"
-
-
-interface IListagemPessoas {
-    id: number
-    nomeCompleto: string
-    email: string
-    cidadeId: number
-}
-
-interface IDetalhePessoa {
-    id: number
-    nomeCompleto: string
-    email: string
-    cidadeId: number
-}
 
 type TPessoasComTotalCount = {
     data: IListagemPessoas[]
