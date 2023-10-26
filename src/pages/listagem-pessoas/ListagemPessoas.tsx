@@ -1,9 +1,10 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
 import { FC, useEffect } from "react";
 import { FerramentasDaListagem } from "../../shared/components";
 import { FerramentasDaListagemButton, FerramentasDaListagemTextField } from "../../shared/components/ferramentas-da-listagem/components";
 import { useListagemPessoas } from "../../shared/hooks";
 import { LayoutBase } from "../../shared/layouts";
+import { Environment } from "../../shared/environments";
 
 export const ListagemPessoas: FC = () => {
 
@@ -12,7 +13,11 @@ export const ListagemPessoas: FC = () => {
         handleClickBusca, 
         carregarListagemDePessoas, 
         handleOnchangeInput,
-        rows
+        rows,
+        isLoading,
+        totalCount,
+        page,
+        setPage
     } = useListagemPessoas()
 
     useEffect(() => {
@@ -51,6 +56,33 @@ export const ListagemPessoas: FC = () => {
                             </TableRow>
                         ))}
                     </TableBody>
+
+                    <TableFooter>
+                        {totalCount > 0 && totalCount > Environment.LIMITE_DE_LINHA && (
+                            <TableRow>
+                                <TableCell>
+                                    <Pagination 
+                                        count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHA)} 
+                                        page={page}
+                                        onChange={(_, newPage) => setPage(newPage)}
+                                        color="primary"
+                                    />
+                                </TableCell>
+                            </TableRow>
+                        )}
+
+                        {isLoading && (
+                            <TableRow>
+                                <TableCell colSpan={3} sx={{p: 0}}>
+                                    <LinearProgress variant="indeterminate" />
+                                </TableCell>
+                            </TableRow>
+                        )}
+                    </TableFooter>
+
+                    {totalCount === 0 && !isLoading && (
+                        <caption>{Environment.LISTAGEM_VAZIA}</caption>
+                    )}
 
                 </Table>
             </TableContainer>

@@ -3,7 +3,7 @@ export const Environment = {
     /**
      * @description Define a quantidade de linhas a ser carregada por padrão nas listagens
      */
-    LIMITE_DE_LINHA: 10,
+    LIMITE_DE_LINHA: 7,
 
     /**
      * @description Placeholder exibido nas inputs
