@@ -48,7 +48,7 @@ export const Dashboard: FC = () => {
                     handleClick={handleClickSalvar}
                 />
                 <FerramentasDeDetalheButton  
-                    label="SALVAR E VOLTAR" 
+                    label="SALVAR E FECHAR" 
                     iconName="save" 
                     handleClick={handleClickSalvarEVoltar}
                     isEsconder={mdDown}
