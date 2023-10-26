@@ -11,6 +11,25 @@
             "nomeCompleto": "Lucas Souza",
             "email": "Lucas@gmail.com",
             "cidadeId": 1
+        },
+        {
+            "id": 3,
+            "nomeCompleto": "Maria Silva",
+            "email": "Maria@gmail.com",
+            "cidadeId": 1
+        },
+        {
+            "id": 4,
+            "nomeCompleto": "Carlos Silva",
+            "email": "Carlos@gmail.com",
+            "cidadeId": 1
+        },
+        {
+            "id": 5,
+            "nomeCompleto": "Alfredo Souza",
+            "email": "Alfredo@gmail.com",
+            "cidadeId": 1
         }
+        
     ]
 }
