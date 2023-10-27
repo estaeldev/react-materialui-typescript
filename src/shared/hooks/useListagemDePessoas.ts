@@ -1,10 +1,10 @@
 import { useCallback, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { IListagemPessoas } from "../interfaces"
 import { PessoasService } from "../services"
-import { useNavigate } from "react-router-dom"
 
     
-export const useListagemPessoas = () => {
+export const useListagemDePessoas = () => {
     
     const [rows, setRows] = useState<IListagemPessoas[]>([])
     const [totalCount, setTotalCount] = useState(0)

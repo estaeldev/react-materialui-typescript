@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { FerramentasDaListagem } from "../../shared/components";
 import { FerramentasDaListagemButton, FerramentasDaListagemTextField } from "../../shared/components/ferramentas-da-listagem/components";
-import { useListagemPessoas } from "../../shared/hooks";
+import { useListagemDePessoas } from "../../shared/hooks";
 import { LayoutBase } from "../../shared/layouts";
 import { TableDePessoas, TableDePessoasBody, TableDePessoasHead } from "./components";
 
@@ -20,7 +20,7 @@ export const ListagemPessoas: FC = () => {
         handleDelete,
         handleEdit,
         handleClickButton
-    } = useListagemPessoas()
+    } = useListagemDePessoas()
 
     useEffect(() => {
         carregarListagemDePessoas()

@@ -1,3 +1,3 @@
 export * from "./useThemeContext"
 export * from "./useDrawerContext"
-export * from "./useListagemPessoas"
+export * from "./useListagemDePessoas"
