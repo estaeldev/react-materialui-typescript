@@ -1,16 +1,19 @@
 import { useCallback, useRef, useState } from "react"
 import { IListagemPessoas } from "../interfaces"
 import { PessoasService } from "../services"
+import { useNavigate } from "react-router-dom"
 
     
 export const useListagemPessoas = () => {
     
-    const [rows, setRows] = useState<IListagemPessoas[]>()
+    const [rows, setRows] = useState<IListagemPessoas[]>([])
     const [totalCount, setTotalCount] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
     const [page, setPage] = useState<number>(1)
     const [filter, setFilter] = useState<string>("")
     const inputBuscaRef = useRef<HTMLInputElement>(null)
+    const navigate = useNavigate()
+
 
     const carregarListagemDePessoas = useCallback(() => {
         setIsLoading(true)
@@ -44,6 +47,24 @@ export const useListagemPessoas = () => {
         }
     }, [])
 
+    const handleDelete = useCallback((id: number) => {
+        // eslint-disable-next-line no-restricted-globals
+        if(confirm("Realmente deseja apagar?")) {
+            PessoasService.deleteById(id).then(result => {
+                if(result instanceof Error) {
+                    alert(result.message)
+                    return
+                }
+                carregarListagemDePessoas()
+                alert("Registro apagado com sucesso!")
+            })
+        }
+    }, [carregarListagemDePessoas])
+
+    const handleEdit = (id: number) => {
+        navigate(`/pessoas/detalhe/${id}`)
+    }
+
     return {
         inputBuscaRef, 
         handleClickBusca, 
@@ -53,7 +74,9 @@ export const useListagemPessoas = () => {
         totalCount,
         isLoading,
         page,
-        setPage
+        setPage,
+        handleDelete,
+        handleEdit
     }
     
 }

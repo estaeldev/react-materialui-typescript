@@ -1,10 +1,10 @@
-import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
+import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
 import { FC, useEffect } from "react";
 import { FerramentasDaListagem } from "../../shared/components";
 import { FerramentasDaListagemButton, FerramentasDaListagemTextField } from "../../shared/components/ferramentas-da-listagem/components";
+import { Environment } from "../../shared/environments";
 import { useListagemPessoas } from "../../shared/hooks";
 import { LayoutBase } from "../../shared/layouts";
-import { Environment } from "../../shared/environments";
 
 export const ListagemPessoas: FC = () => {
 
@@ -17,7 +17,9 @@ export const ListagemPessoas: FC = () => {
         isLoading,
         totalCount,
         page,
-        setPage
+        setPage,
+        handleDelete,
+        handleEdit
     } = useListagemPessoas()
 
     useEffect(() => {
@@ -50,7 +52,14 @@ export const ListagemPessoas: FC = () => {
                     <TableBody>
                         {rows?.map(row => (
                             <TableRow key={row.id}>
-                                <TableCell>{}</TableCell>
+                                <TableCell>
+                                    <IconButton onClick={() => handleDelete(row.id)}>
+                                        <Icon>delete</Icon>
+                                    </IconButton>
+                                    <IconButton onClick={() => handleEdit(row.id)}>
+                                        <Icon>edit</Icon>
+                                    </IconButton>
+                                </TableCell>
                                 <TableCell>{row.nomeCompleto}</TableCell>
                                 <TableCell>{row.email}</TableCell>
                             </TableRow>
@@ -60,7 +69,7 @@ export const ListagemPessoas: FC = () => {
                     <TableFooter>
                         {totalCount > 0 && totalCount > Environment.LIMITE_DE_LINHA && (
                             <TableRow>
-                                <TableCell>
+                                <TableCell colSpan={3}>
                                     <Pagination 
                                         count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHA)} 
                                         page={page}
