@@ -64,6 +64,10 @@ export const useListagemPessoas = () => {
     const handleEdit = (id: number) => {
         navigate(`/pessoas/detalhe/${id}`)
     }
+    
+    const handleClickButton = () => {
+        navigate(`/pessoas/detalhe/nova`)
+    }
 
     return {
         inputBuscaRef, 
@@ -76,7 +80,8 @@ export const useListagemPessoas = () => {
         page,
         setPage,
         handleDelete,
-        handleEdit
+        handleEdit,
+        handleClickButton
     }
     
 }

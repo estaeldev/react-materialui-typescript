@@ -18,7 +18,8 @@ export const ListagemPessoas: FC = () => {
         handleOnchangeInput,
         setPage,
         handleDelete,
-        handleEdit
+        handleEdit,
+        handleClickButton
     } = useListagemPessoas()
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export const ListagemPessoas: FC = () => {
                     handleClickBusca={handleClickBusca}
                     handleOnchangeInput={handleOnchangeInput}
                 />
-                <FerramentasDaListagemButton textoBotaoNovo="Nova"/>
+                <FerramentasDaListagemButton textoBotaoNovo="Nova" aoClicarEmNovoBotao={handleClickButton}/>
             </FerramentasDaListagem>    
 
             <TableDePessoas totalCount={totalCount} page={page} setPage={setPage} isLoading={isLoading}>
