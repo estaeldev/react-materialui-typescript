@@ -1,11 +1,21 @@
 import { LinearProgress } from "@mui/material"
-import { FC, useEffect, useState } from "react"
+import { FormHandles } from "@unform/core"
+import { Form } from "@unform/web"
+import { FC, useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { FerramentasDeDetalhe } from "../../shared/components"
 import { FerramentasDeDetalheButton } from "../../shared/components/ferramentas-de-detalhe/components"
+import { FTextField } from "../../shared/forms"
 import { IDetalhePessoa } from "../../shared/interfaces"
 import { LayoutBase } from "../../shared/layouts"
 import { PessoasService } from "../../shared/services"
+
+
+interface IFormData {
+    email: string
+    nomeCompleto: string,
+    cidadeId: string
+} 
 
 export const DetalheDePessoas: FC = () => {
 
@@ -13,13 +23,22 @@ export const DetalheDePessoas: FC = () => {
     const navigate = useNavigate()
     const [pessoa, setPessoa] = useState({} as IDetalhePessoa)
     const [isLoading, setIsLoading] = useState(false)
-
+    const formRef = useRef<FormHandles>(null)
+    
     const handleClickButtonVoltar = () => {
         navigate("/pessoas")
     }
 
     const handleClickButtonNova = () => {
         navigate("/pessoas/detalhe/nova")
+    }
+
+    const handleClickButtonSalvar = () => {
+        formRef.current?.submitForm()
+    }
+
+    const handleClickButtonSalvarEFecha = () => {
+        formRef.current?.submitForm()
     }
 
     const handleClickButtonDelete = (id: number) => {
@@ -34,6 +53,10 @@ export const DetalheDePessoas: FC = () => {
                 navigate("/pessoas")
             })
         }
+    }
+
+    const handleSave = (data: IFormData) => {
+        console.log(data)
     }
     
     useEffect(() => {
@@ -58,12 +81,13 @@ export const DetalheDePessoas: FC = () => {
                 <FerramentasDeDetalheButton  
                     label="SALVAR" 
                     iconName="save" 
-                    variant="contained" 
+                    variant="contained"
+                    handleClick={handleClickButtonSalvar} 
                 />
                 <FerramentasDeDetalheButton  
                     label="SALVAR E FECHAR" 
                     iconName="save" 
-                    
+                    handleClick={handleClickButtonSalvarEFecha}
                 />
                 {id !== "nova" && (
                     <FerramentasDeDetalheButton  
@@ -88,6 +112,17 @@ export const DetalheDePessoas: FC = () => {
                     handleClick={handleClickButtonVoltar}
                 />
             </FerramentasDeDetalhe>
+            
+
+            <Form onSubmit={handleSave} ref={formRef}>
+                
+                <FTextField placeholder="Nome Completo" nome="nomeCompleto" />
+                <FTextField placeholder="Email" nome="email" />
+                <FTextField placeholder="Cidade Id" nome="cidadeId" />
+                
+
+            </Form>
+            
 
             {isLoading && (
                 <LinearProgress variant="indeterminate" />
