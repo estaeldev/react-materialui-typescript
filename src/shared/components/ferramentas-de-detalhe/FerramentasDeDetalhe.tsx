@@ -5,6 +5,9 @@ interface IFerramentasDeDetalheProps {
     children?: ReactNode | ReactNode[]
 }
 
+/**
+ * @param Children - use (@function FerramentasDeDetalheButton )
+ */
 export const FerramentasDeDetalhe: FC<IFerramentasDeDetalheProps> = ({children}) => {
 
     const theme = useTheme()

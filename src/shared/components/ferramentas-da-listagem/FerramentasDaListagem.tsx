@@ -5,6 +5,9 @@ interface IFerramentasDaListagemProps {
     children?: ReactNode | ReactNode[]
 }
 
+/**
+ * @param Children - use (@function FerramentasDaListagemTextField ) e/ou (@function FerramentasDaListagemButton )
+ */
 export const FerramentasDaListagem: FC<IFerramentasDaListagemProps> = ({children}) => {
     
     const theme = useTheme()
