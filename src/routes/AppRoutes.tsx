@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Dashboard, ListagemPessoas } from "../pages"
+import { Dashboard, DetalheDePessoas, ListagemPessoas } from "../pages"
 import { useDrawerContext } from "../shared/hooks"
 
 export const AppRoutes = () => {
@@ -27,7 +27,7 @@ export const AppRoutes = () => {
             <Routes>
                 <Route path="/pagina-inicial" element={<Dashboard />} />
                 <Route path="/pessoas" element={<ListagemPessoas />} />
-                <Route path="/pessoas/detalhe/:id" element={<p>Detalhe</p>} />
+                <Route path="/pessoas/detalhe/:id" element={<DetalheDePessoas />} />
 
                 <Route path="*" element={<Navigate to={"/pagina-inicial"}/>} />
             </Routes>
