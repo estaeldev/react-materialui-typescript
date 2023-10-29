@@ -23,11 +23,12 @@ export const FTextField: FC<IFTextFieldProps> = ({nome, ...rest}) => {
     return (
         <TextField {...rest} 
             value={value}
-            onChange={(event) => setValue(event.target.value)}
+            onChange={(event) => {setValue(event.target.value); rest.onChange?.(event)}}
             defaultValue={defaultValue}
             error={!!error}
             helperText={error}
-            onKeyDown={() => error ? clearError() : undefined}
+            onKeyDown={(event) => {error && clearError(); rest.onKeyDown?.(event)}}
+            
         />
     )
 
