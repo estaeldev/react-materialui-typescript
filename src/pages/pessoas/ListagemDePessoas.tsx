@@ -31,9 +31,9 @@ export const ListagemPessoas: FC = () => {
 
             <FerramentasDaListagem>
                 <FerramentasDaListagemTextField 
-                    inputBuscaRef={inputBuscaRef} 
+                    inputRef={inputBuscaRef} 
                     handleClickBusca={handleClickBusca}
-                    handleOnchangeInput={handleOnchangeInput}
+                    onChange={handleOnchangeInput}
                 />
                 <FerramentasDaListagemButton textoBotaoNovo="Nova" aoClicarEmNovoBotao={handleClickButton}/>
             </FerramentasDaListagem>    
