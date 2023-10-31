@@ -100,20 +100,30 @@ export const DetalheDePessoas: FC = () => {
                                     label="Nome Completo" 
                                     nome="nomeCompleto" 
                                     disabled={isLoading} 
-                                    onChange={event => setNome(event.target.value)}
+                                    onChange={event => id !== "nova" ? setNome(event.target.value) : undefined}
                                 />
                             </Grid>
                         </Grid>
 
                         <Grid container item direction="row" spacing={1}>
                             <Grid item xs={12} md={5}>
-                                <FTextField fullWidth label="Email" nome="email" disabled={isLoading} />
+                                <FTextField 
+                                    fullWidth 
+                                    label="Email" 
+                                    nome="email" 
+                                    disabled={isLoading} 
+                                />
                             </Grid>
                         </Grid>
 
                         <Grid container item direction="row" spacing={1}>
                             <Grid item xs={12} md={5}>
-                                <FTextField fullWidth label="Cidade" nome="cidadeId" disabled={isLoading} />
+                                <FTextField 
+                                    fullWidth 
+                                    label="Cidade" 
+                                    nome="cidadeId" 
+                                    disabled={isLoading} 
+                                />
                             </Grid>
                         </Grid>
 

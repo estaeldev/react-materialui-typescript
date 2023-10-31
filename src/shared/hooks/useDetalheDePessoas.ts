@@ -1,13 +1,20 @@
 import { FormHandles } from "@unform/core"
 import { useCallback, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import * as Yup from "yup"
 import { PessoasService } from "../services"
 
 interface IFormData {
     email: string
     nomeCompleto: string,
-    cidadeId: number
+    cidadeId: number,
 } 
+
+const formValidationSchema: Yup.Schema<IFormData> = Yup.object().shape({
+    nomeCompleto: Yup.string().required().min(3),
+    email: Yup.string().required().email(),
+    cidadeId: Yup.number().required()
+})
 
 export const useDetalheDePessoas = () => {
 
@@ -59,37 +66,51 @@ export const useDetalheDePessoas = () => {
         }
     }, [navigate])
 
-    const handleSave = useCallback((data: IFormData) => {
-        setIsLoading(true)
+    const handleSave = useCallback(async (data: IFormData) => {
 
-        if(id === "nova") {
-            PessoasService.create(data).then(result => {
-                setIsLoading(false)
-                if(result instanceof Error) {
-                    alert(result.message)
+        await formValidationSchema.validate(data, {abortEarly: false})
+            .then(dataValidade => {
+                setIsLoading(true)
+
+                if(id === "nova") {
+                    PessoasService.create(dataValidade).then(result => {
+                        setIsLoading(false)
+                        if(result instanceof Error) {
+                            alert(result.message)
+                            return
+                        }
+                        alert("Uma nova pessoas foi cadastrado!")
+                        if(isSalvingAndClose.current) {
+                            navigate("/pessoas")
+                        }
+                        formRef.current?.setData({nomeCompleto: "", email: "", cidadeId: ""})
+                    })
                     return
                 }
-                alert("Uma nova pessoas foi cadastrado!")
-                if(isSalvingAndClose.current) {
-                    navigate("/pessoas")
-                }
-                formRef.current?.setData({nomeCompleto: "", email: "", cidadeId: ""})
-            })
-            return
-        }
 
-        PessoasService.updateById(Number(id), data).then(result => {
-            setIsLoading(false)
-            if(result instanceof Error) {
-                alert(result.message)
-            }
-            alert("O cadastro foi atualizado!")
-            if(isSalvingAndClose.current) {
-                navigate("/pessoas")
-            } else if(isSavingAndNew.current) {
-                navigate("/pessoas/detalhe/nova")
-            }
-        })
+                PessoasService.updateById(Number(id), dataValidade).then(result => {
+                    setIsLoading(false)
+                    if(result instanceof Error) {
+                        alert(result.message)
+                    }
+                    alert("O cadastro foi atualizado!")
+                    if(isSalvingAndClose.current) {
+                        navigate("/pessoas")
+                    } else if(isSavingAndNew.current) {
+                        navigate("/pessoas/detalhe/nova")
+                    }
+                })
+
+            }).catch((errors: Yup.ValidationError) => {
+                const errorMessages: Record<string, string> = {}
+                errors.inner.forEach(error => { 
+                    if(error.path) {
+                        errorMessages[error.path] = error.message
+                    }
+                }) 
+                formRef.current?.setErrors(errorMessages)
+            })
+            
 
     }, [id, navigate])
 
