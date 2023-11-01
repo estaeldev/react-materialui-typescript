@@ -1,64 +1,20 @@
 {
   "pessoas": [
     {
-      "nomeCompleto": "José de Souza",
-      "email": "jose@gmail.com",
-      "cidadeId": "1",
-      "id": 4
+      "cidadeId": 1,
+      "email": "tael@gmail.com",
+      "nomeCompleto": "Estael Jose",
+      "id": 1
+    }
+  ],
+  "cidades": [
+    {
+      "nome": "Nova Timboteua",
+      "id": 1
     },
     {
-      "id": 5,
-      "nomeCompleto": "Fabrício Souza",
-      "email": "Fabricio@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 8,
-      "nomeCompleto": "Fulano3 Silva",
-      "email": "Fulano3@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 9,
-      "nomeCompleto": "Fulano4 Silva",
-      "email": "Fulano4@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 10,
-      "nomeCompleto": "Fulano5 Souza",
-      "email": "Fulano5@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 11,
-      "nomeCompleto": "Fulano6 Silva",
-      "email": "Fulano6@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 12,
-      "nomeCompleto": "Fulano7 Souza",
-      "email": "Fulano7@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 14,
-      "nomeCompleto": "Fulano9 Silva",
-      "email": "Fulano9@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "id": 15,
-      "nomeCompleto": "Fulano10 Souza",
-      "email": "Fulano10@gmail.com",
-      "cidadeId": 1
-    },
-    {
-      "nomeCompleto": "Teste",
-      "email": "test@gmail.com",
-      "cidadeId": "1",
-      "id": 16
+      "nome": "Bannach",
+      "id": 2
     }
   ]
 }
