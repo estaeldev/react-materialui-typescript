@@ -1,6 +1,6 @@
 import { TextField, TextFieldProps } from "@mui/material";
 import { useField } from "@unform/core";
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useState } from "react";
 
 type IFTextFieldProps = {
     nome: string 
@@ -9,20 +9,21 @@ type IFTextFieldProps = {
 export const FTextField: FC<IFTextFieldProps> = ({nome, ...rest}) => {
     
     const {fieldName, registerField, defaultValue, error, clearError} = useField(nome)
-    const textFieldRef = useRef<HTMLInputElement>(null)
+    const [textFieldNome, setTextFieldNome] = useState("")
     
     useEffect(() => {
         registerField({
             name: fieldName, 
-            ref: textFieldRef.current,
-            path: "value"
+            getValue: () => textFieldNome,
+            setValue: (_, newValue) => setTextFieldNome(newValue)
         })
 
-    }, [fieldName, registerField])
+    }, [fieldName, registerField, textFieldNome])
 
     return (
         <TextField {...rest} 
-            inputRef={textFieldRef}
+            value={textFieldNome}
+            onChange={(event) => {setTextFieldNome(event.target.value); rest.onChange?.(event)}}
             defaultValue={defaultValue}
             error={!!error}
             helperText={error}

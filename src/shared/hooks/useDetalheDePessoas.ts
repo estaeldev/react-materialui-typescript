@@ -76,58 +76,56 @@ export const useDetalheDePessoas = () => {
         }
     }, [navigate])
 
-    const handleSave = useCallback(async (data: IFormData) => {
+    const handleSave = useCallback((data: IFormData) => {
 
-        await formValidationSchema.validate(data, {abortEarly: false})
-            .then(dataValidade => {
-                setIsLoading(true)
+        formValidationSchema.validate(data, {abortEarly: false}).then(dataValidade => {
+            setIsLoading(true)
 
-                if(id === "nova") {
-                    PessoasService.create(dataValidade).then(result => {
-                        setIsLoading(false)
-                        if(result instanceof Error) {
-                            alert(result.message)
-                            return
-                        }
-                        alert("Uma nova pessoas foi cadastrado!")
-                        if(isSalvingAndClose.current) {
-                            navigate("/pessoas")
-                        }
-                        formRef.current?.setData({nomeCompleto: "", email: "", cidadeId: ""})
-                    })
-                    return
-                }
-
-                PessoasService.updateById(Number(id), dataValidade).then(result => {
+            if(id === "nova") {
+                PessoasService.create(dataValidade).then(result => {
                     setIsLoading(false)
                     if(result instanceof Error) {
                         alert(result.message)
+                        return
                     }
-                    alert("O cadastro foi atualizado!")
+                    alert("Uma nova pessoas foi cadastrado!")
                     if(isSalvingAndClose.current) {
                         navigate("/pessoas")
-                    } else if(isSavingAndNew.current) {
-                        navigate("/pessoas/detalhe/nova")
                     }
                 })
+                formRef.current?.reset()
+                return
+            }
 
-            }).catch((errors: Yup.ValidationError) => {
-                const errorMessages: Record<string, string> = {}
-                errors.inner.forEach(error => { 
-                    if(error.path) {
-                        errorMessages[error.path] = error.message
-                    }
-                }) 
-                formRef.current?.setErrors(errorMessages)
+            PessoasService.updateById(Number(id), dataValidade).then(result => {
+                setIsLoading(false)
+                if(result instanceof Error) {
+                    alert(result.message)
+                }
+                alert("O cadastro foi atualizado!")
+                if(isSalvingAndClose.current) {
+                    navigate("/pessoas")
+                } else if(isSavingAndNew.current) {
+                    navigate("/pessoas/detalhe/nova")
+                }
             })
-            
+
+        }).catch((errors: Yup.ValidationError) => {
+            const errorMessages: Record<string, string> = {}
+            errors.inner.forEach(error => { 
+                if(error.path) {
+                    errorMessages[error.path] = error.message
+                }
+            }) 
+            formRef.current?.setErrors(errorMessages)
+        })
 
     }, [id, navigate])
 
-    const carregarPagina = useCallback(async () => {
+    const carregarPagina = useCallback(() => {
         if(id !== "nova") {
             setIsLoading(true)
-            await PessoasService.getById(Number(id)).then(result => {
+            PessoasService.getById(Number(id)).then(result => {
                 setIsLoading(false)
                 if(result instanceof Error) {
                     alert(result.message)
@@ -140,7 +138,9 @@ export const useDetalheDePessoas = () => {
             return
         }
 
+        formRef.current?.setErrors({})
         formRef.current?.reset()
+        formRef.current?.setFieldValue("cidadeId", "")
     }, [id, navigate])
     
 

@@ -1,10 +1,16 @@
 {
   "pessoas": [
     {
-      "nomeCompleto": "tael",
+      "nomeCompleto": "Tael Meireles",
       "email": "Tael@gmail.com",
       "cidadeId": 1,
       "id": 1
+    },
+    {
+      "nomeCompleto": "Jose Carlos",
+      "email": "jose@gmail.com",
+      "cidadeId": 1,
+      "id": 2
     }
   ],
   "cidades": [

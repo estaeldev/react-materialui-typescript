@@ -48,12 +48,12 @@ export const AutoCompleteCidades: FC<TAutoCompleteCidadesProps> = ({isExternalLo
             noOptionsText="Sem opções"
             loadingText="Carregando..."
             disablePortal
-            value={selectedId ? options.find(opcao => opcao.id === selectedId) : null}
+            value={selectedId ? options.find(opcao => opcao.id === selectedId) ?? null : null}
             options={options} 
             loading={isLoading}
             disabled={isExternalLoading}
             popupIcon={(isExternalLoading || isLoading) ? <CircularProgress size={28} /> : undefined}
-            onChange={(_, newValue) => {setSelectedId(newValue?.id); setBusca("")}}
+            onChange={(_, newValue) => {setSelectedId(newValue?.id ?? undefined); }}
             onInputChange={(_, newValue) => {setBusca(newValue); error && clearError()}}
             renderInput={(params) => (
             <TextField {...params} 
