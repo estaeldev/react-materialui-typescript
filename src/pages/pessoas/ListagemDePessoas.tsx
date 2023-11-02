@@ -40,7 +40,7 @@ export const ListagemPessoas: FC = () => {
 
             <TableDePessoas totalCount={totalCount} page={page} setPage={setPage} isLoading={isLoading}>
                 
-                <TableDePessoasHead listHeads={["Ações", "Nome Completo", "Email"]} />
+                <TableDePessoasHead listHeads={["Ações", "Nome Completo", "Email", "Cidade"]} />
                 <TableDePessoasBody listData={rows} handleDelete={handleDelete} handleEdit={handleEdit} />
                 
             </TableDePessoas>

@@ -19,12 +19,11 @@ const formValidationSchema: Yup.Schema<IFormData> = Yup.object().shape({
     email: 
         Yup.string()
         .required("O campo é obrigatório")
-        .email("Encirra um email válido"),
+        .email("O campo precisa ter um email válido"),
     cidadeId:
         Yup.number()
         .required("O campo é obrigatório")
         .positive("O campo deve ser positivo")
-        .typeError("Encirra um valor válido (número positivo)")
 })
 
 export const useDetalheDePessoas = () => {
@@ -125,10 +124,10 @@ export const useDetalheDePessoas = () => {
 
     }, [id, navigate])
 
-    const carregarPagina = useCallback(() => {
+    const carregarPagina = useCallback(async () => {
         if(id !== "nova") {
             setIsLoading(true)
-            PessoasService.getById(Number(id)).then(result => {
+            await PessoasService.getById(Number(id)).then(result => {
                 setIsLoading(false)
                 if(result instanceof Error) {
                     alert(result.message)
@@ -137,11 +136,12 @@ export const useDetalheDePessoas = () => {
                 }
                 setNome(result.nomeCompleto)
                 formRef.current?.setData(result)
+                
             })
             return
         }
 
-        formRef.current?.setData({nomeCompleto: "", email: "", cidadeId: ""})
+        formRef.current?.reset()
     }, [id, navigate])
     
 

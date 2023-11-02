@@ -6,6 +6,7 @@ import { FerramentasDeDetalheButton } from "../../shared/components/ferramentas-
 import { FTextField } from "../../shared/forms"
 import { useDetalheDePessoas } from "../../shared/hooks"
 import { LayoutBase } from "../../shared/layouts"
+import { AutoCompleteCidades } from "./components"
 
 
 export const DetalheDePessoas: FC = () => {
@@ -118,12 +119,7 @@ export const DetalheDePessoas: FC = () => {
 
                         <Grid container item direction="row" spacing={1}>
                             <Grid item xs={12} md={5}>
-                                <FTextField 
-                                    fullWidth 
-                                    label="Cidade" 
-                                    nome="cidadeId" 
-                                    disabled={isLoading} 
-                                />
+                                <AutoCompleteCidades isExternalLoading={isLoading} />
                             </Grid>
                         </Grid>
 

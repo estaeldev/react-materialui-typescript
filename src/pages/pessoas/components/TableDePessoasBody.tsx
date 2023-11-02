@@ -1,6 +1,6 @@
+import { Icon, IconButton, TableBody, TableCell, TableRow } from "@mui/material";
 import { FC } from "react";
 import { IListagemPessoas } from "../../../shared/interfaces";
-import { Icon, IconButton, TableBody, TableCell, TableRow } from "@mui/material";
 
 interface ITableDePessoasBodyProps {
     listData: IListagemPessoas[]
@@ -27,7 +27,6 @@ export const TableDePessoasBody: FC<ITableDePessoasBodyProps> = ({
                         </IconButton>
                     </TableCell>
                     <TableCell>{row.nomeCompleto}</TableCell>
-                    <TableCell>{row.email}</TableCell>
                 </TableRow>
             ))}
         </TableBody>

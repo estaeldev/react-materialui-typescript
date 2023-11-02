@@ -1,9 +1,9 @@
 {
   "pessoas": [
     {
-      "cidadeId": 1,
-      "email": "tael@gmail.com",
       "nomeCompleto": "Estael Jose",
+      "email": "tael@gmail.com",
+      "cidadeId": 3,
       "id": 1
     }
   ],
@@ -15,6 +15,22 @@
     {
       "nome": "Bannach",
       "id": 2
+    },
+    {
+      "nome": "Capanema",
+      "id": 3
+    },
+    {
+      "nome": "peixe-boi",
+      "id": 4
+    },
+    {
+      "nome": "Bragança",
+      "id": 5
+    },
+    {
+      "nome": "Teste",
+      "id": 6
     }
   ]
 }
