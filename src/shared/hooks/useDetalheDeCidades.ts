@@ -114,10 +114,10 @@ export const useDetalheDeCidades = () => {
 
     }, [id, navigate])
 
-    const carregarPagina = useCallback(() => {
+    const carregarPagina = useCallback(async () => {
         if(id !== "nova") {
             setIsLoading(true)
-            CidadesService.getById(Number(id)).then(result => {
+            await CidadesService.getById(Number(id)).then(result => {
                 setIsLoading(false)
                 if(result instanceof Error) {
                     alert(result.message)
@@ -130,7 +130,7 @@ export const useDetalheDeCidades = () => {
             return
         }
 
-        formRef.current?.setData({nome: ""})
+        formRef.current?.reset()
     }, [id, navigate])
     
 

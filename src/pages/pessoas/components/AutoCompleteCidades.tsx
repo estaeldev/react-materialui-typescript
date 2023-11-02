@@ -8,11 +8,11 @@ type TAutoCompleteOption = {
     label: string
 }
 
-type TAutoCompleteCidades = {
+type TAutoCompleteCidadesProps = {
     isExternalLoading?: boolean
 }
 
-export const AutoCompleteCidades: FC<TAutoCompleteCidades> = ({isExternalLoading=false}) => {
+export const AutoCompleteCidades: FC<TAutoCompleteCidadesProps> = ({isExternalLoading=false}) => {
 
     const {fieldName, registerField, defaultValue, error, clearError} = useField("cidadeId")
     const [options, setOptions] = useState<TAutoCompleteOption[]>([])

@@ -136,7 +136,6 @@ export const useDetalheDePessoas = () => {
                 }
                 setNome(result.nomeCompleto)
                 formRef.current?.setData(result)
-                
             })
             return
         }

@@ -27,6 +27,8 @@ export const TableDePessoasBody: FC<ITableDePessoasBodyProps> = ({
                         </IconButton>
                     </TableCell>
                     <TableCell>{row.nomeCompleto}</TableCell>
+                    <TableCell>{row.email}</TableCell>
+                    <TableCell>{row.cidadeId}</TableCell>
                 </TableRow>
             ))}
         </TableBody>
