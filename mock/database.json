@@ -32,5 +32,8 @@
       "nome": "Teste",
       "id": 6
     }
-  ]
+  ],
+  "auth": {
+    "accessToken": "aaaaaaaaaa.bbbbbbbbbbbb.cccccccccccc"
+  }
 }

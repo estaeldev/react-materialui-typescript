@@ -4,13 +4,13 @@ import { FC, PropsWithChildren, createContext, useCallback, useMemo, useState } 
 import { DarkTheme, LightTheme } from "../themes";
 
 interface IThemeContextData {
-    themeName?: "light" | "dark"
-    toggleTheme?: () => void
+    themeName: "light" | "dark"
+    toggleTheme: () => void
 }
 
 export const ThemeContext = createContext({} as IThemeContextData)
 
-export const AppThemeProvider: FC<PropsWithChildren<IThemeContextData>> = ({children}) => {
+export const AppThemeProvider: FC<PropsWithChildren> = ({children}) => {
 
     const [themeName, setThemeName] = useState<"light" | "dark">("light")
 
@@ -23,7 +23,7 @@ export const AppThemeProvider: FC<PropsWithChildren<IThemeContextData>> = ({chil
         return DarkTheme
     }, [themeName])
 
-    const context = useMemo(() => {
+    const context = useMemo<IThemeContextData>(() => {
         return {themeName, toggleTheme}
     }, [themeName, toggleTheme])
 
