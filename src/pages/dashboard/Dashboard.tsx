@@ -52,14 +52,15 @@ export const Dashboard: FC = () => {
                             <Card >
                                 <CardContent>
                                     {isLoadingPessoas ? (
-                                        <Typography variant="h4" align="center">
+                                        <Box display="flex" gap={1}>
                                             <CircularProgress />
-                                            Carregando...
-                                        </Typography>
+                                            <Typography variant="h4" align="center">
+                                                Carregando...
+                                            </Typography>
+                                         </Box>
                                         ) : (
                                         <>
                                             <Typography variant="h4" align="center">
-                                                <CircularProgress />
                                                 Total de Pessoas
                                             </Typography>
                                             <Box padding={6} display="flex" justifyContent="center" alignItems="center">
@@ -74,7 +75,12 @@ export const Dashboard: FC = () => {
                             <Card>
                                 <CardContent>
                                     {isLoadingCidades ? (
-                                        <Typography variant="h4" align="center">Carregando...</Typography>
+                                        <Box display="flex" gap={1}>
+                                            <CircularProgress />
+                                            <Typography variant="h4" align="center">
+                                                Carregando...
+                                            </Typography>
+                                        </Box>
                                         ) : (
                                         <>
                                             <Typography variant="h4" align="center">Total de Cidades</Typography>

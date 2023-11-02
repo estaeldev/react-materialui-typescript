@@ -37,7 +37,7 @@ export const TableDePessoas: FC<ITableDePessoasProps> = ({
 
                     {isLoading && (
                         <TableRow>
-                            <TableCell colSpan={3} sx={{p: 0}}>
+                            <TableCell colSpan={4} sx={{p: 0}}>
                                 <LinearProgress variant="indeterminate" />
                             </TableCell>
                         </TableRow>
