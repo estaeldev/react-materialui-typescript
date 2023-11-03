@@ -28,19 +28,17 @@ export const AppRoutes = () => {
     }, [setDrawerOptions])
     
     return (
-        <>
-            <Routes>
-                <Route path="/pagina-inicial" element={<Dashboard />} />
+        <Routes>
+            <Route path="/pagina-inicial" element={<Dashboard />} />
 
-                <Route path="/pessoas" element={<ListagemPessoas />} />
-                <Route path="/pessoas/detalhe/:id" element={<DetalheDePessoas />} />
+            <Route path="/pessoas" element={<ListagemPessoas />} />
+            <Route path="/pessoas/detalhe/:id" element={<DetalheDePessoas />} />
 
-                <Route path="/cidades" element={<ListagemCidades />} />
-                <Route path="/cidades/detalhe/:id" element={<DetalheDeCidades />} />
+            <Route path="/cidades" element={<ListagemCidades />} />
+            <Route path="/cidades/detalhe/:id" element={<DetalheDeCidades />} />
 
-                <Route path="*" element={<Navigate to={"/pagina-inicial"}/>} />
-            </Routes>
-        </>
+            <Route path="*" element={<Navigate to={"/pagina-inicial"}/>} />
+        </Routes>
     )
 
 }

@@ -21,12 +21,10 @@ export const ListItemLink: FC<PropsWithChildren<IListItemLinkProps>> = ({label, 
     }
     
     return (
-        <>
-            <ListItemButton onClick={handleClick} selected={!!match}>
-                <ListItemIcon> <Icon>{icon}</Icon> </ListItemIcon>
-                <ListItemText primary={label} />
-            </ListItemButton>
-        </>
+        <ListItemButton onClick={handleClick} selected={!!match}>
+            <ListItemIcon> <Icon>{icon}</Icon> </ListItemIcon>
+            <ListItemText primary={label} />
+        </ListItemButton>
     )
 
 }

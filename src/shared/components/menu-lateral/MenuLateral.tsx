@@ -1,6 +1,6 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
 import { FC, PropsWithChildren } from "react"
-import { useDrawerContext, useThemeContext } from "../../hooks"
+import { useAuthContext, useDrawerContext, useThemeContext } from "../../hooks"
 import { ListItemLink } from "./components/ListItemLink"
 
 export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
@@ -9,6 +9,7 @@ export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
     const smDown = useMediaQuery(theme.breakpoints.down("sm"))
     const {isDrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext()
     const {toggleTheme, themeName} = useThemeContext()
+    const {logout} = useAuthContext()
 
     return (
         <>
@@ -41,6 +42,10 @@ export const MenuLateral: FC<PropsWithChildren> = ({children}) => {
                         <ListItemButton onClick={toggleTheme}>
                             <ListItemIcon> <Icon>{themeName ===  "light" ? "dark_mode" : "light_mode"}</Icon> </ListItemIcon>
                             <ListItemText primary={themeName === "dark" ? "Tema Claro" : "Tema Escuro"} />
+                        </ListItemButton>
+                        <ListItemButton onClick={logout}>
+                            <ListItemIcon> <Icon>logout</Icon> </ListItemIcon>
+                            <ListItemText primary="Sair" />
                         </ListItemButton>
                     </Box>                                   
 
