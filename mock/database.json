@@ -9,7 +9,7 @@
     {
       "nomeCompleto": "Jose Carlos",
       "email": "jose@gmail.com",
-      "cidadeId": 1,
+      "cidadeId": 2,
       "id": 2
     }
   ],
@@ -35,8 +35,20 @@
       "id": 5
     },
     {
-      "nome": "Teste",
+      "nome": "cidade",
       "id": 6
+    },
+    {
+      "nome": "teste",
+      "id": 7
+    },
+    {
+      "nome": "novaA",
+      "id": 8
+    },
+    {
+      "nome": "novaB",
+      "id": 9
     }
   ],
   "auth": {

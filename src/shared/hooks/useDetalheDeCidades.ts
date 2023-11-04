@@ -130,7 +130,9 @@ export const useDetalheDeCidades = () => {
             return
         }
 
-        formRef.current?.reset()
+        formRef.current?.setData({nome: ""} as IFormData)
+        formRef.current?.setErrors({})
+
     }, [id, navigate])
     
 

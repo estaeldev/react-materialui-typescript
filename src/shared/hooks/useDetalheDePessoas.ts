@@ -138,9 +138,9 @@ export const useDetalheDePessoas = () => {
             return
         }
 
+        formRef.current?.setData({nomeCompleto: "", email: ""} as IFormData)
         formRef.current?.setErrors({})
-        formRef.current?.reset()
-        formRef.current?.setFieldValue("cidadeId", "")
+        
     }, [id, navigate])
     
 

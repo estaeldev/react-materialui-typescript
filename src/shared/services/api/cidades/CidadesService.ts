@@ -7,11 +7,11 @@ type TCidadesComTotalCount = {
     totalCount: number
 }
 
-const getAll = async (page=1, filter=""): Promise<TCidadesComTotalCount | Error> => {
-    const url = `/cidades?_page=${page}&_limit=${Environment.LIMITE_DE_LINHA}&nome_like=${filter}`
+const getAll = async (page=1, filter="", id=""): Promise<TCidadesComTotalCount | Error> => {
+    const url = `/cidades?_page=${page}&_limit=${Environment.LIMITE_DE_LINHA}&nome_like=${filter}&id_like=${id}`
     try {
         const {data, headers} = await AxiosConfig.get<IListagemCidades[]>(url)
-
+        
         if(data) {
             return {
                 data,
