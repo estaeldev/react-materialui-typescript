@@ -11,13 +11,10 @@ Esse projeto é um sistema de cadastro de pessoas e cidades
 ### Tecnologias Utilizados
 
 <div>
-    <img width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
     <img width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
     <img width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
     <img width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" />
 </div>
-
-<br/>
 
 #
 
@@ -30,8 +27,6 @@ Esse projeto é um sistema de cadastro de pessoas e cidades
 - [X] Ferramenta de detalhe para `modificação`
 - [X] Troca do tema entre `light` e `dark`
 - [X] Logout no botão `sair`
-
-<br/>
 
 #
 
@@ -50,12 +45,10 @@ yarn
 yarn start
 ```
 
-Iniciar o backend mock (**`Json Server`**)[https://www.npmjs.com/package/json-server] 
+Iniciar o backend mock [**`Json Server`**](https://www.npmjs.com/package/json-server)
 
 ```
 yarn mock_server
 ```
-
-<br/>
 
 #
